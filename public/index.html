@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+    <head>
+        <meta charset="utf-8">
+        <title>Burger King - Food Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+        <link href="/styles/index.css" rel="stylesheet">
+    </head>
+
+    <script>
+        var handleClick = async (option) => {
+            const response = await fetch('/api?option='+option)
+            alert(response)
+        }
+        const button = document.querySelectorAll("#input")
+        button.forEach((b,k,p) => {
+            b.addEventListener("onclick", function(){
+                handleClick(k)
+            })
+        })
+    </script>
+
+    <body style="height: 100vh; margin: 0; width: 100vw;">
+        <div style="align-items: center; display: flex; gap: 10px; height: 100%; justify-content: center; width: 100%;">
+            <div id="input" onclick="handleClick(1)" style="background-color: transparent; border-radius: 100%; display: flex; align-items: center; justify-content: center; height: 10rem; width: 10rem;">
+                Go left
+            </div>
+            <div id="input" style="background-color: transparent; border-radius: 100%; display: flex; align-items: center; justify-content: center; height: 10rem; width: 10rem;">
+                Click to start game
+            </div>
+            <div id="input" style="background-color: transparent; border-radius: 100%; display: flex; align-items: center; justify-content: center; height: 10rem; width: 10rem;">
+                Go Right
+            </div>
+        </div>
+    </body>
+</html>

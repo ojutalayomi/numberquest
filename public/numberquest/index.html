@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Numberquest</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="Numberquest">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="game.png">
+        <meta property="og:url" content="https://numberquest.com">
+        <meta property="og:description" content="A Number Guessing Game">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Numberquest">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #15202b;
+            color: #ffffff;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .game-panel {
+            background-color: #192734;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            text-align: center;
+            margin-bottom: 1rem;
+            min-height: 24px;
+        }
+
+        .value {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background-color: #253341;
+            border: 2px solid #15202b;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+
+        .numpad {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .num-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .num-btn {
+            flex: 1;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #253341;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .num-btn:hover {
+            background-color: #2c3e50;
+        }
+
+        .clear {
+            background-color: #e74c3c;
+        }
+
+        .send {
+            background-color: #2ecc71;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            flex: 1;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .start {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .end {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .control-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+    <body>
+        <div class="header">
+            <h1>N U M B E R Q U E S T </h1>
+            <h2>The Ultimate Number Game</h2>
+            <h3>Progress through levels of increasing difficulty to become the Number Master!</h3>
+            <p>Try to guess the secret number!</p>
+        </div>
+        
+        <div class="container">
+            <div class="game-panel">
+                <h5 id="msg" class="message"></h5>
+                <input type="text" id="value" class="value" oninput="sendInstruction()" readonly>
+                
+                <div class="numpad">
+                    <div class="num-row">
+                        <button class="num-btn" onclick="document.getElementById('value').value +='1'">1</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='2'">2</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='3'">3</button>
+                    </div>
+                    <div class="num-row">
+                        <button class="num-btn" onclick="document.getElementById('value').value +='4'">4</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='5'">5</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='6'">6</button>
+                    </div>
+                    <div class="num-row">
+                        <button class="num-btn" onclick="document.getElementById('value').value +='7'">7</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='8'">8</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='9'">9</button>
+                    </div>
+                    <div class="num-row">
+                        <button class="num-btn clear" onclick="document.getElementById('value').value= ''">⌫</button>
+                        <button class="num-btn" onclick="document.getElementById('value').value +='0'">0</button>
+                        <button class="num-btn send" onclick="sendInstruction()">Send</button>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="control-btn start" onclick="document.getElementById('value').value ='start'; sendInstruction()">New Game</button>
+                    <button class="control-btn end" onclick="document.getElementById('value').value ='end'; sendInstruction()">End Game</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/security/js/socket.io-client.js"></script>
+    <script src="/security/js/script.js"></script>
+</html>
