@@ -57,7 +57,7 @@ A multiplayer number guessing game built with Go and Socket.IO where players pro
 
 ## Technical Details
 
-- Backend: Go with Gorilla WebSocket
+- Backend: Go with Go-Socket.io
 - Frontend: HTML, CSS, JavaScript
 - Real-time Communication: Socket.IO
 - State Management: Server-side game state
